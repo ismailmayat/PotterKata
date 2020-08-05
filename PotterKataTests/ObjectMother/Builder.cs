@@ -9,7 +9,7 @@ namespace PotterKataTests.ObjectMother
         {
             IDiscount oneBookDiscount = new OneBookDiscount(1);
             
-            IDiscount twoBookDiscount = new TwoBookDiscount(2);
+            IDiscount twoBookDiscount = new TwoBookDiscount(2,5);
             
             IEnumerable<IDiscount> discounts = new List<IDiscount>{oneBookDiscount,twoBookDiscount};
             

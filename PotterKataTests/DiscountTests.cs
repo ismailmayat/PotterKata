@@ -2,7 +2,6 @@
 using FluentAssertions;
 using NUnit.Framework;
 using PotterDiscount;
-using PotterDiscount.Discounts;
 
 namespace PotterKataTests
 {

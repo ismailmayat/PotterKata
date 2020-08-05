@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PotterDiscount.Discounts
 {
@@ -13,16 +14,7 @@ namespace PotterDiscount.Discounts
 
         public decimal Calculate(IEnumerable<Book> books)
         {
-            decimal total=0;
-
-            //how to determine we have different types and 
-            
-            foreach (var book in books)
-            {
-                total += book.BookPrice;
-            }
-
-            return total;
+            return books.Sum(book => book.BookPrice);
         }
     }
 }
