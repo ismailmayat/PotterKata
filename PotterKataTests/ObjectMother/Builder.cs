@@ -17,7 +17,9 @@ namespace PotterKataTests.ObjectMother
             
             IDiscount fourBookDiscount = new BookDiscount(4,20);
             
-            IEnumerable<IDiscount> discounts = new List<IDiscount>{oneBookDiscount,twoBookDiscount,threeBookDiscount,fourBookDiscount};
+            IDiscount fiveBookDiscount = new BookDiscount(5,25);
+            
+            IEnumerable<IDiscount> discounts = new List<IDiscount>{oneBookDiscount,twoBookDiscount,threeBookDiscount,fourBookDiscount,fiveBookDiscount};
             
             var discounter = new Discounter(discounts);
 
@@ -67,5 +69,15 @@ namespace PotterKataTests.ObjectMother
             return books;
         }
 
+        public static IEnumerable<Book> FiveUniqueBooks(decimal oneBookPrice)
+        {
+            var fourUniqueBooks = FourUniqueBooks(oneBookPrice);
+            
+            var books = new List<Book> {new Book(oneBookPrice, "978-1408855690")};
+            
+            books.AddRange(fourUniqueBooks);
+
+            return books;
+        }
     }
 }

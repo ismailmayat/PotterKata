@@ -45,5 +45,13 @@ namespace PotterKataTests
 
             sut.Apply(books).Should().Be((decimal) 25.60);
         }
+
+        [Test]
+        public void Five_Unique_Books_Gives_Twenty_Five_Per_Cent_Discount()
+        {
+            var books = ObjectMother.Builder.FiveUniqueBooks(OneBookPrice);
+
+            sut.Apply(books).Should().Be((decimal) 30.00);
+        }
     }
 }
