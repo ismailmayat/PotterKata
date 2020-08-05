@@ -54,6 +54,12 @@
     <ItemGroup>
       <None Include="packages.config" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\PotterDiscount\PotterDiscount.csproj">
+        <Project>{4a136493-07df-4dcb-8594-d91443a4a24e}</Project>
+        <Name>PotterDiscount</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
