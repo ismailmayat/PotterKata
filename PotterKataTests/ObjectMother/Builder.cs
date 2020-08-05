@@ -6,6 +6,7 @@ namespace PotterKataTests.ObjectMother
 {
     public static class Builder
     {
+
         public static Discounter Discounter()
         {
             IDiscount oneBookDiscount = new OneBookDiscount(1);
@@ -14,7 +15,9 @@ namespace PotterKataTests.ObjectMother
             
             IDiscount threeBookDiscount = new BookDiscount(3,10);
             
-            IEnumerable<IDiscount> discounts = new List<IDiscount>{oneBookDiscount,twoBookDiscount,threeBookDiscount};
+            IDiscount fourBookDiscount = new BookDiscount(4,20);
+            
+            IEnumerable<IDiscount> discounts = new List<IDiscount>{oneBookDiscount,twoBookDiscount,threeBookDiscount,fourBookDiscount};
             
             var discounter = new Discounter(discounts);
 
@@ -49,6 +52,17 @@ namespace PotterKataTests.ObjectMother
             var books = new List<Book> {new Book(oneBookPrice, "978-1408855676")};
             
             books.AddRange(twoUniqueBooks);
+
+            return books;
+        }
+
+        public static IEnumerable<Book> FourUniqueBooks(decimal oneBookPrice)
+        {
+            var threeUniqueBooks = ThreeUniqueBooks(oneBookPrice);
+            
+            var books = new List<Book> {new Book(oneBookPrice, "978-1408855683")};
+            
+            books.AddRange(threeUniqueBooks);
 
             return books;
         }
