@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using PotterDiscount;
-using PotterDiscount.Discounts;
 
-namespace PotterKataTests
+namespace PotterDiscount.Discounts
 {
     public class Discounter
     {
@@ -16,16 +14,21 @@ namespace PotterKataTests
 
         public decimal Apply(IEnumerable<Book> books)
         {
+
             var booksToDiscount = books.ToList();
+
+            var uniqueBooks = new UniqueBooks(booksToDiscount);
+
+            var noOfUniqueBooks = uniqueBooks.Count();
             
-            if (booksToDiscount.Count() == 1)
+            if (noOfUniqueBooks == 1)
             {
                 var discounter = _discounters.First(d => d.ForNoBooks == 1);
 
                 return discounter.Calculate(booksToDiscount);
             }
 
-            if (TwoDifferentBooks(booksToDiscount))
+            if (noOfUniqueBooks==2)
             {
                 var discounter = _discounters.First(d => d.ForNoBooks == 2);
                 return discounter.Calculate(booksToDiscount);
@@ -34,14 +37,7 @@ namespace PotterKataTests
             return 0;
         }
 
-        private bool TwoDifferentBooks(IEnumerable<Book> books)
-        {
-            if (books.Count() == 2 && books.First().Isbn != books.Last().Isbn)
-            {
-                return true;
-            }
-
-            return false;
-        }
+     
+        
     }
 }
