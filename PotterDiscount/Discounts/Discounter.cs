@@ -16,12 +16,32 @@ namespace PotterKataTests
 
         public decimal Apply(IEnumerable<Book> books)
         {
-            if (books.Count() == 1)
+            var booksToDiscount = books.ToList();
+            
+            if (booksToDiscount.Count() == 1)
             {
-                return books.First().BookPrice;
+                var discounter = _discounters.First(d => d.ForNoBooks == 1);
+
+                return discounter.Calculate(booksToDiscount);
+            }
+
+            if (TwoDifferentBooks(booksToDiscount))
+            {
+                var discounter = _discounters.First(d => d.ForNoBooks == 2);
+                return discounter.Calculate(booksToDiscount);
             }
 
             return 0;
+        }
+
+        private bool TwoDifferentBooks(IEnumerable<Book> books)
+        {
+            if (books.Count() == 2 && books.First().Isbn != books.Last().Isbn)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

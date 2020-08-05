@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using PotterDiscount;
-using PotterDiscount.Discounts;
+using System.Linq;
 
-namespace PotterKataTests
+namespace PotterDiscount.Discounts
 {
     public class TwoBookDiscount:IDiscount
     {
@@ -17,7 +16,11 @@ namespace PotterKataTests
 
         public decimal Calculate(IEnumerable<Book> books)
         {
-            return 0;
+            decimal total = books.Sum(book => book.BookPrice);
+
+            decimal disount = (total / 100) * 5;
+
+            return total - disount;
         }
     }
 }

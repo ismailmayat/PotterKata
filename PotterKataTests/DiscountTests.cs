@@ -34,9 +34,9 @@ namespace PotterKataTests
             
             IEnumerable<Book> books = new List<Book>{philosophersStone,chamberOfSecrets};
             
-            var sut = new TwoBookDiscount(2);
+            var sut = ObjectMother.Builder.Discounter();
         
-            sut.Calculate(books).Should().Be((decimal)15.20);
+            sut.Apply(books).Should().Be((decimal)15.20);
         }
 
     }
