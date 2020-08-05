@@ -64,6 +64,16 @@ namespace PotterKataTests
             sut.Apply(books).Should().Be(expectedTotal);
 
         }
+
+        [Test]
+        public void Books_Two_Two_Two_One_One_Should_Discount_Correctly()
+        {
+            decimal expectedTotal = 51.60M;
+
+            var books = ObjectMother.Builder.Two_Two_Two_One_One(OneBookPrice);
+
+            sut.Apply(books).Should().Be(expectedTotal);
+        }
     }
     
 }

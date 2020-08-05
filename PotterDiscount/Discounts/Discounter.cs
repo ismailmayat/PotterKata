@@ -6,10 +6,12 @@ namespace PotterDiscount.Discounts
     public class Discounter
     {
         private readonly IEnumerable<IDiscount> _discounters;
+        private readonly decimal _fullPrice;
 
-        public Discounter(IEnumerable<IDiscount> discounters)
+        public Discounter(IEnumerable<IDiscount> discounters,decimal fullPrice)
         {
             _discounters = discounters;
+            _fullPrice = fullPrice;
         }
 
         public decimal Apply(IEnumerable<Book> books)
@@ -23,6 +25,23 @@ namespace PotterDiscount.Discounts
             
             var noOfUniqueBooks = uniqueBooks.Count();
             
+            if (hasDuplicates)
+            {
+              //figure out how many then charge full price for those
+              int noOfDuplicates = books.Count() - uniqueBooks.Count();
+              
+              int fullCharge = noOfDuplicates;
+              
+              if (fullCharge > 1)
+              {
+                  fullCharge = fullCharge / 2;
+                
+              }
+
+              return Calculate(noOfUniqueBooks, false,booksToDiscount.Take(noOfUniqueBooks).ToList()) + (fullCharge* _fullPrice);
+              
+            }
+
             return Calculate(noOfUniqueBooks, hasDuplicates,booksToDiscount);
         }
 
