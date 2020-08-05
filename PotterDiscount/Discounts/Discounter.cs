@@ -21,23 +21,14 @@ namespace PotterDiscount.Discounts
 
             var noOfUniqueBooks = uniqueBooks.Count();
             
-            if (noOfUniqueBooks == 1)
-            {
-                var discounter = _discounters.First(d => d.ForNoBooks == 1);
-
-                return discounter.Calculate(booksToDiscount);
-            }
-
-            if (noOfUniqueBooks==2)
-            {
-                var discounter = _discounters.First(d => d.ForNoBooks == 2);
-                return discounter.Calculate(booksToDiscount);
-            }
-
-            return 0;
+            return Calculate(noOfUniqueBooks, booksToDiscount);
         }
 
-     
-        
+        private decimal Calculate(int noOfUniqueBooks, List<Book> booksToDiscount)
+        {
+            var discounter = _discounters.First(d => d.ForNoBooks == noOfUniqueBooks);
+
+            return discounter.Calculate(booksToDiscount);
+        }
     }
 }

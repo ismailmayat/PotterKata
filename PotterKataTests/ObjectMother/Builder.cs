@@ -39,5 +39,17 @@ namespace PotterKataTests.ObjectMother
             return books;
 
         }
+
+        public static IEnumerable<Book> ThreeUniqueBooks(decimal oneBookPrice)
+        {
+            var twoUniqueBooks = TwoUniqueBooks(oneBookPrice);
+
+            var books = new List<Book> {new Book(oneBookPrice, "978-1408855676")};
+            
+            books.AddRange(twoUniqueBooks);
+
+            return books;
+        }
+
     }
 }
