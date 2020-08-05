@@ -38,7 +38,7 @@ namespace PotterKataTests
             
             var sut = ObjectMother.Builder.Discounter();
         
-            sut.Apply(books).Should().Be((decimal)15.20);
+            sut.Apply(books).Should().Be((decimal)21.60);
         }
     }
 }
