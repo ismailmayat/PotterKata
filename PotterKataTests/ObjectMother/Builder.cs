@@ -79,5 +79,17 @@ namespace PotterKataTests.ObjectMother
 
             return books;
         }
+
+        public static IEnumerable<Book> ThreeUniqueBooksOneDuplicate(decimal oneBookPrice)
+        {
+           var threeUnique =  ThreeUniqueBooks(oneBookPrice);
+
+           //add in chamber of secrets which means its duplicate
+           var books = new List<Book> {new Book(oneBookPrice, "978-1408855669")};
+           
+           books.AddRange(threeUnique);
+
+           return books;
+        }
     }
 }

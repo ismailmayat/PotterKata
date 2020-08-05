@@ -55,10 +55,14 @@ namespace PotterKataTests
         }
 
         [Test]
-        public void Three_Unique_Books_Gives_Ten_Per_Cent_Discount_Forth_Is_Full_Price()
+        public void Three_Unique_Books_Gives_Ten_Per_Cent_Discount_Fourth_Is_Full_Price()
         {
             decimal expectedTotal = 29.60M;
-            
+
+            var books = ObjectMother.Builder.ThreeUniqueBooksOneDuplicate(OneBookPrice);
+
+            sut.Apply(books).Should().Be(expectedTotal);
+
         }
     }
     
