@@ -12,6 +12,8 @@ namespace PotterDiscount.Discounts
 
         public int ForNoBooks { get; }
 
+        public bool ForDuplicates => false;
+
         public decimal Calculate(IEnumerable<Book> books)
         {
             return books.Sum(book => book.BookPrice);

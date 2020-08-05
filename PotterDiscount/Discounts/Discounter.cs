@@ -19,14 +19,17 @@ namespace PotterDiscount.Discounts
 
             var uniqueBooks = new UniqueBooks(booksToDiscount);
 
+            bool hasDuplicates = uniqueBooks.HasDuplicates();
+            
             var noOfUniqueBooks = uniqueBooks.Count();
             
-            return Calculate(noOfUniqueBooks, booksToDiscount);
+            return Calculate(noOfUniqueBooks, hasDuplicates,booksToDiscount);
         }
 
-        private decimal Calculate(int noOfUniqueBooks, List<Book> booksToDiscount)
+        private decimal Calculate(int noOfUniqueBooks,bool hasDuplicates, List<Book> booksToDiscount)
         {
-            var discounter = _discounters.First(d => d.ForNoBooks == noOfUniqueBooks);
+            //does a look up to get us the correct discount calculator
+            var discounter = _discounters.First(d => d.ForNoBooks == noOfUniqueBooks && d.ForDuplicates == hasDuplicates);
 
             return discounter.Calculate(booksToDiscount);
         }
