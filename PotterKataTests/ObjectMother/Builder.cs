@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PotterDiscount;
 using PotterDiscount.Discounts;
 
 namespace PotterKataTests.ObjectMother
@@ -16,6 +17,27 @@ namespace PotterKataTests.ObjectMother
             var discounter = new Discounter(discounts);
 
             return discounter;
+        }
+
+        public static IEnumerable<Book> OneUniqueBook(decimal price)
+        {
+            var book = new Book(price,"978-1408855652");
+            
+            IEnumerable<Book> books = new List<Book>{book};
+
+            return books;
+        }
+
+        public static IEnumerable<Book> TwoUniqueBooks(decimal price)
+        {
+            var philosophersStone = new Book(price,"978-1408855652");
+            
+            var chamberOfSecrets = new Book(price,"978-1408855669");
+            
+            IEnumerable<Book> books = new List<Book>{philosophersStone,chamberOfSecrets};
+
+            return books;
+
         }
     }
 }
