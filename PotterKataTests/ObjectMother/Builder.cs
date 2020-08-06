@@ -9,7 +9,7 @@ namespace PotterKataTests.ObjectMother
 
         public static Discounter Discounter()
         {
-            IDiscount oneBookDiscount = new OneBookDiscount(1);
+           
             
             IDiscount twoBookDiscount = new BookDiscount(2,5);
             
@@ -19,7 +19,7 @@ namespace PotterKataTests.ObjectMother
             
             IDiscount fiveBookDiscount = new BookDiscount(5,25);
             
-            IEnumerable<IDiscount> discounts = new List<IDiscount>{oneBookDiscount,twoBookDiscount,threeBookDiscount,fourBookDiscount,fiveBookDiscount};
+            IEnumerable<IDiscount> discounts = new List<IDiscount>{twoBookDiscount,threeBookDiscount,fourBookDiscount,fiveBookDiscount};
             
             var discounter = new Discounter(discounts,8M);
 
