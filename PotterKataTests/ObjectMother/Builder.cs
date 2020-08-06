@@ -92,6 +92,18 @@ namespace PotterKataTests.ObjectMother
            return books;
         }
 
+        public static IEnumerable<Book> SameBook(int numberOfBooks,decimal oneBookPrice)
+        {
+            var books = new List<Book>();
+
+            for (int i = 0; i < numberOfBooks; i++)
+            {
+                books.Add(new Book(oneBookPrice,"12345"));
+            }
+
+            return books;
+        }
+
         public static IEnumerable<Book> Two_Two_Two_One_One(decimal oneBookPrice)
         {
             var books = new List<Book> {new Book(oneBookPrice, "1"),

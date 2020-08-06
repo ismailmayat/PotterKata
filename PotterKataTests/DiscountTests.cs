@@ -20,7 +20,20 @@ namespace PotterKataTests
             sut.Apply(books).Should().Be(OneBookPrice);
             
         }
-        
+
+        [Test]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        public void Same_Books_Should_Be_Multiple_Of_Fixed_Price(int noOfBooks)
+        {
+            var sameBooks = ObjectMother.Builder.SameBook(noOfBooks,OneBookPrice);
+
+            sut.Apply(sameBooks).Should().Be(noOfBooks * OneBookPrice);
+        }
+
         [Test]
         public void Two_Different_Books_Gives_Five_Per_Cent_Discount()
         {

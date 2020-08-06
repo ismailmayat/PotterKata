@@ -24,10 +24,19 @@ namespace PotterDiscount.Discounts
             bool hasDuplicates = uniqueBooks.HasDuplicates();
             
             var noOfUniqueBooks = uniqueBooks.Count();
-            
+
+
+            if (booksToDiscount.Distinct().Count() == 1)
+            {
+                return booksToDiscount.Count() * booksToDiscount.First().BookPrice;
+            }
+
             if (hasDuplicates)
             {
               //figure out how many then charge full price for those
+              
+              //figure out split of sets that u have
+              
               int noOfDuplicates = books.Count() - uniqueBooks.Count();
               
               int fullCharge = noOfDuplicates;
