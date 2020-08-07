@@ -26,5 +26,10 @@ namespace PotterDiscount.Discounts
             var hashset = new HashSet<string>();
             return Books.Any(e => !hashset.Add(e.Isbn));
         }
+
+        public bool AllSame()
+        {
+            return _books.Distinct().Count() == 1;
+        }
     }
 }

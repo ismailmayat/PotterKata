@@ -19,14 +19,11 @@ namespace PotterDiscount.Discounts
 
             var booksToDiscount = bookBasket.Books.ToList();
 
-            var uniqueBooks = new BookBasket(booksToDiscount);
-
-            bool hasDuplicates = uniqueBooks.HasDuplicates();
+            bool hasDuplicates = bookBasket.HasDuplicates();
             
-            var noOfUniqueBooks = uniqueBooks.Count();
+            var noOfUniqueBooks = bookBasket.Books.Count();
 
-
-            if (booksToDiscount.Distinct().Count() == 1)
+            if (bookBasket.AllSame())
             {
                 return booksToDiscount.Count() *_fullPrice;
             }
