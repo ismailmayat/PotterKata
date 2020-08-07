@@ -55,7 +55,7 @@ namespace PotterDiscount.Discounts
                 }
 
                 return total;
-                //over the 2 sets get the totals then compare with actual and do subtraction that gives u the same ones if any
+
             }
 
             var noOfUniqueBooks = bookBasket.Books.Count();

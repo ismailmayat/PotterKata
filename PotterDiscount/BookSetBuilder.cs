@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TechDebtAttributes;
 
 namespace PotterDiscount
 {
@@ -11,6 +12,7 @@ namespace PotterDiscount
             _setCount = setCount;
         }
 
+        [TechDebt(10,100,Description = "No ideal with regards to Big(O) needs to be made more performant using set theory?")]
         public Dictionary<int, List<Book>> Build(List<Book> books)
         {
             var set = BuildSetBuilder(books.Count);
