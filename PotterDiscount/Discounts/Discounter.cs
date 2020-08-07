@@ -28,7 +28,7 @@ namespace PotterDiscount.Discounts
 
             if (booksToDiscount.Distinct().Count() == 1)
             {
-                return booksToDiscount.Count() * booksToDiscount.First().BookPrice;
+                return booksToDiscount.Count() *_fullPrice;
             }
 
             if (hasDuplicates)
