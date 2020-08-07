@@ -23,7 +23,7 @@ namespace PotterKataTests
             
             var books = bookIsbns.Select(isbn => new Book(8, isbn)).ToList();
             
-            var sut = new UniqueBooks(books);
+            var sut = new BookBasket(books);
 
             sut.Count().Should().Be(expectedCount);
         }
@@ -33,7 +33,7 @@ namespace PotterKataTests
         {
             var books = ObjectMother.Builder.ThreeUniqueBooksOneDuplicate(4M);
             
-            var sut = new UniqueBooks(books);
+            var sut = new BookBasket(books);
 
             sut.HasDuplicates().Should().BeTrue();
         }
@@ -43,7 +43,7 @@ namespace PotterKataTests
         {
             var books = ObjectMother.Builder.FourUniqueBooks(4M);
             
-            var sut = new UniqueBooks(books);
+            var sut = new BookBasket(books);
 
             sut.HasDuplicates().Should().BeFalse();
         }

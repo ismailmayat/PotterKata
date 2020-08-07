@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace PotterDiscount.Discounts
 {
-    public class UniqueBooks
+    public class BookBasket
     {
         private readonly IEnumerable<Book> _books;
 
-        public UniqueBooks(IEnumerable<Book> books)
+        public BookBasket(IEnumerable<Book> books)
         {
             _books = books;
         }

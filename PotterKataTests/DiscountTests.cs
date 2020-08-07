@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 using PotterDiscount.Discounts;
 
@@ -10,7 +11,25 @@ namespace PotterKataTests
         private const decimal OneBookPrice = 8.00M;
 
         private readonly Discounter sut = ObjectMother.Builder.Discounter();
-        
+
+        [Test]
+        public void tmp()
+        {
+            var list = ObjectMother.Builder.Two_Two_Two_One_One(8).ToList();
+            
+            var duplicates = list.GroupBy(x => x.Isbn) 
+                .Where(g => g.Count() > 1)
+                .SelectMany(g => g);
+
+            var uniques = list.GroupBy(x => x.Isbn) 
+                .Where(g => g.Count() == 1)
+                .SelectMany(g => g);
+
+            uniques.Count().Should().Be(2);
+
+            duplicates.Count().Should().Be(6);
+        }
+
         [Test]
         public void One_Book_Costs_Fixed_Price()
         {

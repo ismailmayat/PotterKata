@@ -19,7 +19,7 @@ namespace PotterDiscount.Discounts
 
             var booksToDiscount = books.ToList();
 
-            var uniqueBooks = new UniqueBooks(booksToDiscount);
+            var uniqueBooks = new BookBasket(booksToDiscount);
 
             bool hasDuplicates = uniqueBooks.HasDuplicates();
             
@@ -36,18 +36,6 @@ namespace PotterDiscount.Discounts
               //figure out how many then charge full price for those
               
               //figure out split of sets that u have
-              
-              int noOfDuplicates = books.Count() - uniqueBooks.Count();
-              
-              int fullCharge = noOfDuplicates;
-              
-              if (fullCharge > 1)
-              {
-                  fullCharge = fullCharge / 2;
-                
-              }
-
-              return Calculate(noOfUniqueBooks, false,booksToDiscount.Take(noOfUniqueBooks).ToList()) + (fullCharge* _fullPrice);
               
             }
 
