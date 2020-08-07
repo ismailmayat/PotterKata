@@ -21,7 +21,7 @@ namespace PotterKataTests.ObjectMother
             
             IEnumerable<IDiscount> discounts = new List<IDiscount>{twoBookDiscount,threeBookDiscount,fourBookDiscount,fiveBookDiscount};
             
-            var discounter = new Discounter(discounts,8M);
+            var discounter = new Discounter(discounts,8M,5);
 
             return discounter;
         }
