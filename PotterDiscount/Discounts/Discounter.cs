@@ -45,7 +45,7 @@ namespace PotterDiscount.Discounts
 
                 foreach (var item in set.Keys)
                 {
-                    total += Calculate(set[item].Count, false, set[item]);
+                    total += Calculate(set[item].Count, set[item]);
                     setCount += set[item].Count;
                 }
 
@@ -61,13 +61,13 @@ namespace PotterDiscount.Discounts
 
             var noOfUniqueBooks = bookBasket.Books.Count();
             
-            return Calculate(noOfUniqueBooks, hasDuplicates,booksToDiscount);
+            return Calculate(noOfUniqueBooks, booksToDiscount);
         }
 
-        private decimal Calculate(int noOfUniqueBooks,bool hasDuplicates, IEnumerable<Book> booksToDiscount)
+        private decimal Calculate(int noOfUniqueBooks,IEnumerable<Book> booksToDiscount)
         {
             //does a look up to get us the correct discount calculator
-            var discounter = _discounters.First(d => d.ForNoBooks == noOfUniqueBooks && d.ForDuplicates == hasDuplicates);
+            var discounter = _discounters.First(d => d.ForNoBooks == noOfUniqueBooks );
 
             return discounter.Calculate(booksToDiscount);
         }

@@ -7,7 +7,7 @@ using PotterDiscount.Discounts;
 namespace PotterKataTests
 {
     [TestFixture]
-    public class UniqueTests
+    public class BookBasketTests
     {
         [Test]
         [TestCase("11111",1)]

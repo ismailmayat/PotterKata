@@ -65,7 +65,7 @@
         <Compile Include="DiscountTests.cs" />
         <Compile Include="ObjectMother\Builder.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="UniqueBookTests.cs" />
+        <Compile Include="BookBasketTests.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />

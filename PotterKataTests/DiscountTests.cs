@@ -11,7 +11,7 @@ namespace PotterKataTests
     {
         private const decimal OneBookPrice = 8.00M;
 
-        private readonly Discounter sut = ObjectMother.Builder.Discounter();
+        private readonly Discounter _sut = ObjectMother.Builder.Discounter();
         
         [Test]
         public void One_Book_Costs_Fixed_Price()
@@ -19,7 +19,7 @@ namespace PotterKataTests
 
             var books = ObjectMother.Builder.OneUniqueBook(OneBookPrice);
   
-            sut.Apply(books).Should().Be(OneBookPrice);
+            _sut.Apply(books).Should().Be(OneBookPrice);
             
         }
 
@@ -33,7 +33,7 @@ namespace PotterKataTests
         {
             var sameBooks = ObjectMother.Builder.SameBook(noOfBooks,OneBookPrice);
 
-            sut.Apply(sameBooks).Should().Be(noOfBooks * OneBookPrice);
+            _sut.Apply(sameBooks).Should().Be(noOfBooks * OneBookPrice);
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace PotterKataTests
 
             var books = ObjectMother.Builder.TwoUniqueBooks(OneBookPrice);
         
-            sut.Apply(books).Should().Be(15.20M);
+            _sut.Apply(books).Should().Be(15.20M);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace PotterKataTests
         {
             var books = ObjectMother.Builder.ThreeUniqueBooks(OneBookPrice);
         
-            sut.Apply(books).Should().Be(21.60M);
+            _sut.Apply(books).Should().Be(21.60M);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace PotterKataTests
         {
             var books = ObjectMother.Builder.FourUniqueBooks(OneBookPrice);
 
-            sut.Apply(books).Should().Be( 25.60M);
+            _sut.Apply(books).Should().Be( 25.60M);
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace PotterKataTests
         {
             var books = ObjectMother.Builder.FiveUniqueBooks(OneBookPrice);
 
-            sut.Apply(books).Should().Be(30.00M);
+            _sut.Apply(books).Should().Be(30.00M);
         }
 
         [Test]
@@ -76,7 +76,7 @@ namespace PotterKataTests
 
             var books = ObjectMother.Builder.ThreeUniqueBooksOneDuplicate(OneBookPrice);
 
-            sut.Apply(books).Should().Be(expectedTotal);
+            _sut.Apply(books).Should().Be(expectedTotal);
 
         }
 
@@ -87,7 +87,7 @@ namespace PotterKataTests
 
             var books = ObjectMother.Builder.Two_Two_Two_One_One(OneBookPrice);
 
-            sut.Apply(books).Should().Be(expectedTotal);
+            _sut.Apply(books).Should().Be(expectedTotal);
         }
     }
     
