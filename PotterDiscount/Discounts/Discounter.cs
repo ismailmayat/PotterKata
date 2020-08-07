@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,7 +16,7 @@ namespace PotterDiscount.Discounts
 
         public Discounter(IEnumerable<IDiscount> discounters,decimal fullPrice,int setCount)
         {
-            _discounters = discounters;
+            _discounters = discounters ?? throw new ArgumentNullException(nameof(discounters));
             _fullPrice = fullPrice;
             _setCount = setCount;
         }

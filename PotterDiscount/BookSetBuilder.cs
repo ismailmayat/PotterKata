@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TechDebtAttributes;
 
@@ -15,7 +16,9 @@ namespace PotterDiscount
         [TechDebt(10,100,Description = "No ideal with regards to Big(O) needs to be made more performant using set theory?")]
         public Dictionary<int, List<Book>> Build(List<Book> books)
         {
-            var set = BuildSetBuilder(books.Count);
+            if (books == null) throw new ArgumentNullException(nameof(books));
+            
+            var set = Build(books.Count);
                 
             BuildSet(books, set.Count, set);
 
@@ -25,8 +28,6 @@ namespace PotterDiscount
         private void BuildSet(List<Book> booksToDiscount, int setCount, Dictionary<int, List<Book>> set)
         {
             //create the unique sets
-
-            //todo u need to then remove stuff from the original list
             foreach (var book in booksToDiscount)
             {
                 for (int i = 0; i < setCount; i++)
@@ -40,7 +41,7 @@ namespace PotterDiscount
             }
         }
 
-        private Dictionary<int, List<Book>> BuildSetBuilder(int booksToDiscount)
+        private Dictionary<int, List<Book>> Build(int booksToDiscount)
         {
             int setCount = 0;
             if (booksToDiscount % 5 == 0)
