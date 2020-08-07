@@ -12,17 +12,19 @@ namespace PotterDiscount.Discounts
             _books = books;
         }
 
+        public IEnumerable<Book> Books => _books;
+
         public int Count()
         {
             var hashset = new HashSet<string>();
 
-            return _books.Count(book => hashset.Add(book.Isbn));
+            return Books.Count(book => hashset.Add(book.Isbn));
         }
 
         public bool HasDuplicates()
         {
             var hashset = new HashSet<string>();
-            return _books.Any(e => !hashset.Add(e.Isbn));
+            return Books.Any(e => !hashset.Add(e.Isbn));
         }
     }
 }

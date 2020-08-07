@@ -14,10 +14,10 @@ namespace PotterDiscount.Discounts
             _fullPrice = fullPrice;
         }
 
-        public decimal Apply(IEnumerable<Book> books)
+        public decimal Apply(BookBasket bookBasket)
         {
 
-            var booksToDiscount = books.ToList();
+            var booksToDiscount = bookBasket.Books.ToList();
 
             var uniqueBooks = new BookBasket(booksToDiscount);
 

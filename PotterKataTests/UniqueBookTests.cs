@@ -31,20 +31,16 @@ namespace PotterKataTests
         [Test]
         public void List_With_Duplicates_Should_Be_True()
         {
-            var books = ObjectMother.Builder.ThreeUniqueBooksOneDuplicate(4M);
+            var sut = ObjectMother.Builder.ThreeUniqueBooksOneDuplicate(4M);
             
-            var sut = new BookBasket(books);
-
             sut.HasDuplicates().Should().BeTrue();
         }
 
         [Test]
         public void List_Without_Duplicates_Should_Be_False()
         {
-            var books = ObjectMother.Builder.FourUniqueBooks(4M);
+            var sut = ObjectMother.Builder.FourUniqueBooks(4M);
             
-            var sut = new BookBasket(books);
-
             sut.HasDuplicates().Should().BeFalse();
         }
     }

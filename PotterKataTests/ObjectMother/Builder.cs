@@ -26,16 +26,16 @@ namespace PotterKataTests.ObjectMother
             return discounter;
         }
 
-        public static IEnumerable<Book> OneUniqueBook(decimal price)
+        public static BookBasket OneUniqueBook(decimal price)
         {
             var book = new Book(price,"978-1408855652");
             
             IEnumerable<Book> books = new List<Book>{book};
 
-            return books;
+            return  new BookBasket(books);
         }
 
-        public static IEnumerable<Book> TwoUniqueBooks(decimal price)
+        public static BookBasket TwoUniqueBooks(decimal price)
         {
             var philosophersStone = new Book(price,"978-1408855652");
             
@@ -43,56 +43,56 @@ namespace PotterKataTests.ObjectMother
             
             IEnumerable<Book> books = new List<Book>{philosophersStone,chamberOfSecrets};
 
-            return books;
+            return new BookBasket(books);
 
         }
 
-        public static IEnumerable<Book> ThreeUniqueBooks(decimal oneBookPrice)
+        public static BookBasket ThreeUniqueBooks(decimal oneBookPrice)
         {
-            var twoUniqueBooks = TwoUniqueBooks(oneBookPrice);
+            var twoUniqueBooks = TwoUniqueBooks(oneBookPrice).Books;
 
             var books = new List<Book> {new Book(oneBookPrice, "978-1408855676")};
             
             books.AddRange(twoUniqueBooks);
 
-            return books;
+            return new BookBasket(books);
         }
 
-        public static IEnumerable<Book> FourUniqueBooks(decimal oneBookPrice)
+        public static BookBasket FourUniqueBooks(decimal oneBookPrice)
         {
-            var threeUniqueBooks = ThreeUniqueBooks(oneBookPrice);
+            var threeUniqueBooks = ThreeUniqueBooks(oneBookPrice).Books;
             
             var books = new List<Book> {new Book(oneBookPrice, "978-1408855683")};
             
             books.AddRange(threeUniqueBooks);
 
-            return books;
+            return new BookBasket(books);
         }
 
-        public static IEnumerable<Book> FiveUniqueBooks(decimal oneBookPrice)
+        public static BookBasket FiveUniqueBooks(decimal oneBookPrice)
         {
-            var fourUniqueBooks = FourUniqueBooks(oneBookPrice);
+            var fourUniqueBooks = FourUniqueBooks(oneBookPrice).Books;
             
             var books = new List<Book> {new Book(oneBookPrice, "978-1408855690")};
             
             books.AddRange(fourUniqueBooks);
 
-            return books;
+            return new BookBasket(books);
         }
 
-        public static IEnumerable<Book> ThreeUniqueBooksOneDuplicate(decimal oneBookPrice)
+        public static BookBasket ThreeUniqueBooksOneDuplicate(decimal oneBookPrice)
         {
-           var threeUnique =  ThreeUniqueBooks(oneBookPrice);
+           var threeUnique =  ThreeUniqueBooks(oneBookPrice).Books;
 
            //add in chamber of secrets which means its duplicate
            var books = new List<Book> {new Book(oneBookPrice, "978-1408855669")};
            
            books.AddRange(threeUnique);
 
-           return books;
+           return new BookBasket(books);
         }
 
-        public static IEnumerable<Book> SameBook(int numberOfBooks,decimal oneBookPrice)
+        public static BookBasket SameBook(int numberOfBooks,decimal oneBookPrice)
         {
             var books = new List<Book>();
 
@@ -101,10 +101,10 @@ namespace PotterKataTests.ObjectMother
                 books.Add(new Book(oneBookPrice,"12345"));
             }
 
-            return books;
+            return new BookBasket(books);
         }
 
-        public static IEnumerable<Book> Two_Two_Two_One_One(decimal oneBookPrice)
+        public static BookBasket Two_Two_Two_One_One(decimal oneBookPrice)
         {
             var books = new List<Book> {new Book(oneBookPrice, "1"),
                                         new Book(oneBookPrice, "1"),
@@ -117,7 +117,7 @@ namespace PotterKataTests.ObjectMother
                                         
             };
 
-            return books;
+            return new BookBasket(books);
         }
     }
 }
