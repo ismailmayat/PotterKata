@@ -34,17 +34,24 @@ namespace PotterDiscount.Discounts
            
             if (hasDuplicates)
             {
-                var set= BuildSetHolder(booksToDiscount.Count());
-               
-                int setCount = set.Count;
-                
-                BuildSet(booksToDiscount, setCount, set);
+                var bookSetBuilder = new BookSetBuilder(_setCount);
 
-                decimal total=0M;
+                var set = bookSetBuilder.Build(booksToDiscount);
+
+                decimal total = 0M;
+
+                int setCount = 0;
 
                 foreach (var item in set.Keys)
                 {
                     total += Calculate(set[item].Count, false, set[item]);
+                    setCount += set[item].Count;
+                }
+
+                //we have some single books not part of set
+                if (booksToDiscount.Count() > setCount)
+                {
+                    total += (booksToDiscount.Count - setCount) * _fullPrice;
                 }
 
                 return total;
@@ -54,46 +61,6 @@ namespace PotterDiscount.Discounts
             var noOfUniqueBooks = bookBasket.Books.Count();
             
             return Calculate(noOfUniqueBooks, hasDuplicates,booksToDiscount);
-        }
-
-        private static void BuildSet(List<Book> booksToDiscount, int setCount, Dictionary<int, List<Book>> set)
-        {
-            //create the unique sets
-
-            //todo u need to then remove stuff from the original list
-            foreach (var book in booksToDiscount)
-            {
-                for (int i = 0; i < setCount; i++)
-                {
-                    if (!set[i].Contains(book))
-                    {
-                        set[i].Add(book);
-                        break;
-                    }
-                }
-            }
-        }
-
-        private Dictionary<int, List<Book>> BuildSetHolder(int booksToDiscount)
-        {
-            int setCount = 0;
-            if (booksToDiscount % 5 == 0)
-            {
-                setCount = (booksToDiscount / 5);
-            }
-            else
-            {
-                setCount = (booksToDiscount / 5) + 1;
-            }
-
-            var multiSet = new Dictionary<int, List<Book>>();
-
-            for (int i = 0; i < setCount; i++)
-            {
-                multiSet.Add(i, new List<Book>(_setCount));
-            }
-
-            return multiSet;
         }
 
         private decimal Calculate(int noOfUniqueBooks,bool hasDuplicates, IEnumerable<Book> booksToDiscount)
