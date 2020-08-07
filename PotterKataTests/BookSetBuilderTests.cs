@@ -19,5 +19,17 @@ namespace PotterKataTests
 
             sut.Count.Should().Be(2);
         }
+
+        [Test]
+        public void When_One_Set_In_List_Bigger_Than_Five_Set()
+        {
+            var bigListOneSet = ObjectMother.Builder.ThreeUniqueBooksOneDuplicate(8M);
+            
+            var builder =new BookSetBuilder(5);
+
+            var sut = builder.Build(bigListOneSet.Books.ToList());
+
+            sut.Count().Should().Be(1);
+        }
     }
 }
