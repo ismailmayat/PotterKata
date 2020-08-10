@@ -22,7 +22,7 @@ namespace PotterBenchMark
 
         private void CreateOneThousandBooksFiveOfEach()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 100; j++)
                 {
