@@ -5,14 +5,12 @@ namespace PotterDiscount.Discounts
 {
     public class BookDiscount:Discount, IDiscount
     {
-        private readonly int _noBooks;
-
         public BookDiscount(int noBooks,decimal discountPercentage):base(discountPercentage)
         {
-            _noBooks = noBooks;
+            ForNoBooks = noBooks;
         }
 
-        public int ForNoBooks => _noBooks;
+        public int ForNoBooks { get; }
 
         public new decimal Calculate(IEnumerable<Book> books)
         {

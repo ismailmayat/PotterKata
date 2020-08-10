@@ -5,20 +5,20 @@ namespace PotterDiscount.Discounts
 {
     public abstract class Discount
     {
-        protected decimal Percentage;
+        private readonly decimal _percentage;
 
         protected Discount(decimal percentage)
         {
-            Percentage = percentage;
+            _percentage = percentage;
         }
 
         protected decimal Calculate(IEnumerable<Book> books)
         {
             decimal total = books.Sum(book => book.BookPrice);
 
-            decimal disount = (total / 100) * Percentage;
+            decimal discount = (total / 100) * _percentage;
 
-            return total - disount;    
+            return total - discount;    
         }
     }
 }

@@ -7,6 +7,7 @@ namespace PotterDiscount.Discounts
     public class Discounter
     {
         private readonly IEnumerable<IDiscount> _discounters;
+        
         private readonly decimal _fullPrice;
         
         /// <summary>
@@ -48,9 +49,8 @@ namespace PotterDiscount.Discounts
                     total += Calculate(set[item].Count, set[item]);
                     setCount += set[item].Count;
                 }
-
-                //we have some single books not part of set
-                if (booksToDiscount.Count() > setCount)
+                
+                if (IncompleteSet(booksToDiscount, setCount))
                 {
                     total += (booksToDiscount.Count - setCount) * _fullPrice;
                 }
@@ -62,6 +62,11 @@ namespace PotterDiscount.Discounts
             var noOfUniqueBooks = bookBasket.Books.Count();
             
             return Calculate(noOfUniqueBooks, booksToDiscount);
+        }
+
+        private static bool IncompleteSet(List<Book> booksToDiscount, int setCount)
+        {
+            return booksToDiscount.Count > setCount;
         }
 
         private decimal Calculate(int noOfUniqueBooks,IEnumerable<Book> booksToDiscount)
