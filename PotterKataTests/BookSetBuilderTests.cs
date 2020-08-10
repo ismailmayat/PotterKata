@@ -31,5 +31,18 @@ namespace PotterKataTests
 
             sut.Count().Should().Be(1);
         }
+
+        [Test]
+        public void One_Thousands_Books_Five_Of_Each_Should_Give_Two_HundredSets()
+        {
+            var books = ObjectMother.Builder.OneThousandBooks(8M);
+            
+            var builder = new BookSetBuilder(5);
+
+            var sut = builder.Build(books.ToList());
+
+            sut.Count().Should().Be(200);
+
+        }
     }
 }

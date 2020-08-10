@@ -119,5 +119,20 @@ namespace PotterKataTests.ObjectMother
 
             return new BookBasket(books);
         }
+
+        public static IEnumerable<Book> OneThousandBooks(decimal oneBookPrice)
+        {
+            List<Book> books = new List<Book>();
+            
+            for (var i = 0; i < 10; i++)
+            {
+                for (var j = 0; j < 100; j++)
+                {
+                    books.Add(new Book(oneBookPrice,i.ToString()+j.ToString()));
+                }
+            }
+
+            return books;
+        }
     }
 }
