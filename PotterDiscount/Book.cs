@@ -1,4 +1,5 @@
 using System;
+using TechDebtAttributes;
 
 namespace PotterDiscount
 {
@@ -7,8 +8,10 @@ namespace PotterDiscount
 
         //todo bookprice and isbn showing primitive obsession should use specific types like Money or Isbn which encapsulates rules
         
+        [TechDebt(10,50,Description = "Primitive obession ideally need money type")]
         public decimal BookPrice { get; }
         
+        [TechDebt(10,50,Description = "Primitive obession ideally need isbn type")]
         public string Isbn { get; }
         
         public Book(decimal bookPrice, string isbn)
