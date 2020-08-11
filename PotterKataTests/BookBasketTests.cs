@@ -1,8 +1,8 @@
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
-using PotterDiscount;
-using PotterDiscount.Discounts;
+using PotterKata;
+using PotterKata.Discounts;
 
 namespace PotterKataTests
 {

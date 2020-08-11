@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotterKataTests", "PotterKataTests\PotterKataTests.csproj", "{888D5113-D6E8-4B63-95E4-5F8430F04E9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotterDiscount", "PotterDiscount\PotterDiscount.csproj", "{4A136493-07DF-4DCB-8594-D91443A4A24E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotterKata", "PotterKata\PotterKata.csproj", "{4A136493-07DF-4DCB-8594-D91443A4A24E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

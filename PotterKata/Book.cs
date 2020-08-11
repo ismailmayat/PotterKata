@@ -1,7 +1,7 @@
 using System;
 using TechDebtAttributes;
 
-namespace PotterDiscount
+namespace PotterKata
 {
     public class Book:IEquatable<Book>
     {

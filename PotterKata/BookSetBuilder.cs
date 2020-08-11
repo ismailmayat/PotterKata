@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using TechDebtAttributes;
 
-namespace PotterDiscount
+namespace PotterKata
 {
     public class BookSetBuilder
     {

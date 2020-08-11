@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PotterDiscount.Discounts
+namespace PotterKata.Discounts
 {
     public class BookDiscount:Discount, IDiscount
     {

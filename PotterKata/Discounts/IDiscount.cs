@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PotterDiscount.Discounts
+namespace PotterKata.Discounts
 {
     public interface IDiscount
     {

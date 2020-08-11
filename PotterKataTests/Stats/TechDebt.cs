@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using NUnit.Framework;
-using PotterDiscount;
+using PotterKata;
 using TechDebtAttributes;
 
 namespace PotterKataTests.Stats

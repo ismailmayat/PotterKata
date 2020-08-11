@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TechDebtAttributes;
 
-namespace PotterDiscount.Discounts
+namespace PotterKata.Discounts
 {
 
     [TechDebt(10,100,Description = "Keep running count of sets while adding books to basket, then we can return sets rather than calculating")]

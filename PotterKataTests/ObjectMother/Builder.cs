@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using PotterDiscount;
-using PotterDiscount.Discounts;
+using PotterKata;
+using PotterKata.Discounts;
 
 namespace PotterKataTests.ObjectMother
 {

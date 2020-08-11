@@ -75,9 +75,9 @@
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\PotterDiscount\PotterDiscount.csproj">
+      <ProjectReference Include="..\PotterKata\PotterKata.csproj">
         <Project>{4a136493-07df-4dcb-8594-d91443a4a24e}</Project>
-        <Name>PotterDiscount</Name>
+        <Name>PotterKata</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
